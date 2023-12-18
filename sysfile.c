@@ -104,6 +104,19 @@ sys_close(void)
 }
 
 int
+sys_getinodesize(void){
+  struct inode *ip;
+  char *path;
+  begin_op();
+  if(argstr(0, &path) < 0 || (ip = namei(path)) == 0){
+    end_op();
+    return -1;
+  }
+  
+  return ip->size;
+}
+
+int
 sys_fstat(void)
 {
   struct file *f;
