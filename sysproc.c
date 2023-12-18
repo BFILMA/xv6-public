@@ -7,10 +7,43 @@
 #include "mmu.h"
 #include "proc.h"
 
+int 
+sys_setpriority(void){
+argint(0, &myproc()->priority);
+return myproc()->priority;
+}
+
+int
+sys_getkernelstartaddr(void){
+return KERNBASE;
+}
+
+int
+sys_getkernelendaddr(void){
+return KERNBASE+PHYSTOP;
+}
+
+int
+sys_getkernelvariaddr(void){
+int n = 43;
+return (int) &n;
+}
+
+int
+sys_getyear(void)
+{
+return 1975;
+}
+
 int
 sys_fork(void)
 {
   return fork();
+}
+
+int
+(*sys_getsystemcalladdr())(void){
+return sys_fork;
 }
 
 int
@@ -54,6 +87,14 @@ sys_sbrk(void)
   if(growproc(n) < 0)
     return -1;
   return addr;
+}
+
+int
+sys_getmysize(void)
+{
+ int addr;
+ addr = myproc()->sz;
+return addr;
 }
 
 int
