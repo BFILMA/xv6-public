@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "hotdbg.h": "c",
+        "proc.h": "c"
+    }
+}

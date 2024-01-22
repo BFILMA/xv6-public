@@ -31,6 +31,10 @@ main(void)
       printf(1, "init: exec sh failed\n");
       exit();
     }
+    if(pid > 0){
+      exec("hotdbg", argv);
+      exit();
+    }
     while((wpid=wait()) >= 0 && wpid != pid)
       printf(1, "zombie!\n");
   }
