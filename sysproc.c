@@ -130,3 +130,13 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+int
+sys_mycall(void)
+{
+  return mycall();
+}
+
+int sys_mycall2(void){
+  return mycall2();
+}

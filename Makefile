@@ -186,6 +186,8 @@ UPROGS=\
 	_hotd4\
 	_hotd5\
 	_hotdbg\
+	_ps\
+	_user_program\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
@@ -263,6 +265,8 @@ EXTRA=\
 	hotd4\
 	hotd5\
 	hotdbg.c\
+	ps.c\
+	user_program.c\
 
 dist:
 	rm -rf dist
